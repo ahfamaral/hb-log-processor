@@ -1,0 +1,28 @@
+{
+  "name": "hb-log-processor",
+  "version": "1.0.0",
+  "description": "Read .logs, logs statistics and write INSERT query",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint */*.js",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahfamaral/hb-log-processor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahfamaral/hb-log-processor/issues"
+  },
+  "homepage": "https://github.com/ahfamaral/hb-log-processor#readme",
+  "devDependencies": {
+    "eslint": "^7.7.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^23.20.0",
+    "nodemon": "^2.0.4"
+  }
+}
