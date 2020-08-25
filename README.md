@@ -5,7 +5,7 @@ Read .logs, logs statistics and write INSERT query
 `npm install`
 
 ## Run
-Paste logs.log file inside src directory and run `npm start`
+Paste `logs.log` file inside `src` directory and run `npm start`
 
 ## Lint
 `npm run lint`
