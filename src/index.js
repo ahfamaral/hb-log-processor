@@ -16,7 +16,7 @@ console.log('Heart Beat Medical Logs-Processor STARTED')
 try {
 	const logData = fs.readFileSync('src/logs.log', 'utf8')
 
-	console.log('Finished reading logs sucessfully')
+	console.log('Finished reading logs sucessfully.')
 
 	const logLinesArray = logData.split('\n').filter((el) => el.includes('operation-responsetime'))
 
@@ -73,13 +73,41 @@ try {
 		})
 	})
 
+	console.log('Finished gathering data.')
+
 	const wholeInsertQuery = `insert into GraphqlDurations\n(created, operation, operationType, duration, method)\nvalues\n${insertValuesSQL}`
 
 	fs.writeFileSync('src/insertQuery.txt', wholeInsertQuery, 'utf8')
 
-	console.log('typeOperationsArray', typeOperationsArray)
-	console.log('operationNames length', operationNames.length)
-	console.log('operationsArray', operationsArray)
+	console.log('Insert Query written.')
+
+	console.log('\nRESULTS:\n')
+
+	typeOperationsArray.forEach((op) => {
+		console.log(`1. operation type, ${op.type}, executed ${op.count} times`)
+	})
+
+	console.log(`\n2. Counts for different operations: ${operationNames.length}\n`)
+
+	const logKeys = {
+		avg: 3,
+		max: 4,
+		min: 5,
+	}
+
+	Object.keys(logKeys).forEach((key) => {
+		typeOperationsArray.forEach((op) => {
+			console.log(`${logKeys[key]}.a) operation type: ${op.type}, ${key} duration: ${op[key]}`)
+		})
+
+		console.log('\n')
+
+		operationsArray.forEach((op) => {
+			console.log(`${logKeys[key]}.b) operation name: ${op.operation}, ${key} duration: ${op[key]}`)
+		})
+
+		console.log('\n')
+	})
 } catch (e) {
 	console.error('Error:', e.stack)
 }
